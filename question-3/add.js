@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const logs = path.join(__dirname, 'Logs');
+const logs = path.join(__dirname, 'logs');
 
 // Please run question-3.js
 // I just split the functions into their own files because I could
