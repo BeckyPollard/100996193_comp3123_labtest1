@@ -23,5 +23,5 @@ rejectedPromise().then((res) => {
   console.log(res);
 }).catch((err) => {
   // Captures the rejection and logs the error message
-  console.err({"Error": err.message});
+  console.error({"Error": err.message});
 });
