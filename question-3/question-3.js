@@ -1,35 +1,15 @@
-const fs = require('fs');
-const path = require('path');
-const logs = path.join(__dirname, 'Logs');
+const removeLogs = require('./remove');
+const createLogs = require('./add');
 
+// "It is acceptable, to have a remove.js script and a separate add.js script."
+// I will take this as a fun challenge let's do it
+// This file is just here because i like each folder having a script with its name
+// can run this and it'll do both sure
 
-const removeLogs = () => {
-  if(fs.existsSync(logs)) {
-    const files = fs.readdirSync(logs);
-
-    files.forEach(file => {
-      const filePath = path.join(logs, file);
-      console.log(`Delete files... ${file}`);
-      fs.unlinkSync(filePath);
-    });
-
-    fs.rmdirSync(logs);
-  } else {
-    console.log('ERROR no log files to delete so script cannot');
-  }
+const logs = () => {
+  removeLogs();
+  createLogs();
 };
+logs();
 
-const createLogs = () => {
-  if(!fs.existsSync(logs)) {
-    fs.mkdirSync(logs);
-  }
-  process.chdir(logs);
-  for(let i = 0; i < 10; i++) {
-    const fileName = `log${i + 1}.txt`;
-    fs.writeFileSync(fileName, fileName);
-    console.log(fileName);
-  }
-};
-
-removeLogs();
-createLogs();
+console.log("");
